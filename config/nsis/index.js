@@ -2,13 +2,14 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-04-24 15:13:11
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-04-24 15:20:48
+ * @LastEditTime: 2021-04-24 18:15:17
  * @Description: NSIS 配置文件
  * @FilePath: /like/config/nsis/index.js
  */
 const pkg = require("../../package.json");
 
 module.exports = {
+  language: "2052", // 安装语言代码
   oneClick: true, // 是否一键安装
   perMachine: true, // 选择按机器安装
   allowElevation: true, // 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。
