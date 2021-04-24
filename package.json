@@ -52,13 +52,7 @@
       "prettier"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
   "lint-staged": {
-    "*.{js,css,html,md,ts,tsx,vue}": "prettier --write"
+    "*.{js,css,html,md,ts,tsx,vue}": "eslint --cache --fix"
   }
 }
