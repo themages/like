@@ -1,0 +1,24 @@
+// 变量
+// $bg-color: #ed795a;
+
+// 混合
+// @mixin wd($width: 200px) {
+//   width: $width;
+// }
+// .header {
+//   @include wd();
+// }
+
+// 函数
+// @function per($data) {
+//   @return $data/10 + px;
+// }
+
+// 继承 @extend
+// .font {
+//   font-size: 14px;
+// }
+// .footer {
+//   @extend .font;
+//   border-width: 2px;
+// }

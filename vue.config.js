@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-04-24 14:25:44
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-04-24 16:04:22
+ * @LastEditTime: 2021-04-24 23:01:56
  * @Description: vue-cli 和 electron-builder 的打包配置文件
  * @FilePath: /like/vue.config.js
  */
@@ -28,6 +28,21 @@ module.exports = {
   },
   lintOnSave: isDev,
   productionSourceMap: isDev,
+  css: {
+    requireModuleExtension: true,
+    loaderOptions: {
+      css: {
+        modules: {
+          localIdentName: isDev ? "[name]-[local]-[hash:8]" : "[hash:base64:8]",
+        },
+        localsConvention: "asIs",
+      },
+      sass: {
+        // 向所有 Sass/Less 样式传入共享的全局变量
+        prependData: `@import "~@/assets/style/index.scss";`,
+      },
+    },
+  },
   pluginOptions: {
     electronBuilder: {
       mainProcessFile: "src/background.js",
