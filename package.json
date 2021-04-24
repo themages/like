@@ -46,6 +46,11 @@
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-electron-builder": "~2.0.0-rc.6"
   },
+  "eslintConfig": {
+    "extends": [
+      "prettier"
+    ]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
