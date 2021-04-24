@@ -47,11 +47,6 @@
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-electron-builder": "~2.0.0-rc.6"
   },
-  "eslintConfig": {
-    "extends": [
-      "prettier"
-    ]
-  },
   "lint-staged": {
     "*.{js,css,html,md,ts,tsx,vue}": "eslint --cache --fix"
   }
