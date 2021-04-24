@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "electron:serve": "vue-cli-service electron:serve",
+    "lint": "vue-cli-service lint -y",
     "electron:build": "vue-cli-service electron:build",
-    "publish": "npm run electron:build -- -p always",
+    "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
-    "lint": "vue-cli-service lint -y",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "publish": "npm run electron:build -- -p always"
   },
   "main": "background.js",
   "dependencies": {
@@ -37,7 +37,7 @@
     "electron": "^11.0.0",
     "electron-devtools-installer": "^3.1.0",
     "eslint": "^6.7.2",
-    "eslint-config-prettier": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.0.0",
     "husky": "^6.0.0",
