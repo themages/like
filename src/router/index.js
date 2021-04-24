@@ -1,9 +1,10 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router"; // createWebHistory
 import Home from "../views/Home.vue";
 
 const routes = [
+  { path: "/", redirect: { path: "/home" } },
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home,
   },
@@ -19,7 +20,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(), // createWebHistory()
   routes,
 });
 
