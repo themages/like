@@ -16,5 +16,6 @@
 !macroend
 
 !macro customUnInstall
+  DeleteRegKey HKCR "canicode"
   DeleteRegKey /ifempty HKCR "canicode"
 !macroend
