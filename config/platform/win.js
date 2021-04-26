@@ -9,7 +9,7 @@
 const config = require("../index");
 // const sign = require("../../config/certificate/index");
 module.exports = {
-  icon: "build/icons/icon.ico",
+  icon: "build/icons/app.ico",
   target: [
     {
       target: "nsis",
