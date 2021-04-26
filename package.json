@@ -10,7 +10,7 @@
     "postuninstall": "electron-builder install-app-deps",
     "prepare": "husky install",
     "publish": "npm run electron:build -- -p always",
-    "ico": "./node_modules/png-to-ico build/icons/icon.png > icon.ico"
+    "ico": "png-to-ico build/icons/app.png > app.ico"
   },
   "main": "background.js",
   "dependencies": {
