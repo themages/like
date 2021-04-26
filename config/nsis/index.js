@@ -10,7 +10,7 @@ const pkg = require("../../package.json");
 
 module.exports = {
   language: "2052", // 安装语言代码
-  oneClick: true, // 是否一键安装
+  oneClick: false, // 是否一键安装
   perMachine: true, // 选择按机器安装
   allowElevation: true, // 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。
   allowToChangeInstallationDirectory: true, // 允许修改安装目录
@@ -22,5 +22,5 @@ module.exports = {
   menuCategory: true, // 为开始菜单快捷方式和程序文件目录创建子菜单
   runAfterFinish: true, // 安装完成后默认勾选打开应用
   shortcutName: pkg.name, // 图标名称
-  include: "installer.nsh", // 自定义 NSIS 脚本
+  include: "config/nsis/installer.nsh", // 自定义 NSIS 脚本
 };
