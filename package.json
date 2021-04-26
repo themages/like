@@ -9,7 +9,8 @@
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
     "prepare": "husky install",
-    "publish": "npm run electron:build -- -p always"
+    "publish": "npm run electron:build -- -p always",
+    "ico": "./node_modules/png-to-ico build/icons/icon.png > icon.ico"
   },
   "main": "background.js",
   "dependencies": {
@@ -42,6 +43,7 @@
     "eslint-plugin-vue": "^7.0.0",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
+    "png-to-ico": "^2.1.2",
     "prettier": "^2.2.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
