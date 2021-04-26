@@ -10,7 +10,7 @@ const config = require("../index");
 module.exports = {
   mac: {
     category: "public.app-category.productivity",
-    icon: "build/icons/icon.icns",
+    icon: "build/icons/app.icns",
     target: ["dmg"], // "zip"
     identity: "themages.canicode.cn",
     hardenedRuntime: true,
@@ -23,7 +23,7 @@ module.exports = {
     },
   },
   dmg: {
-    icon: "build/icons/icon.icns",
+    icon: "build/icons/app.icns",
     background: "build/icons/background.png",
     iconSize: 128,
     sign: false,
