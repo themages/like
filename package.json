@@ -2,6 +2,8 @@
   "name": "like",
   "version": "0.1.0",
   "private": true,
+  "author": "zengxingqi<zengxingqi.com>",
+  "description": "An audio and video communication live application",
   "scripts": {
     "lint": "vue-cli-service lint -y",
     "electron:build": "vue-cli-service electron:build",
