@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-04-24 14:25:44
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-04-24 23:01:56
+ * @LastEditTime: 2021-05-08 10:15:55
  * @Description: vue-cli 和 electron-builder 的打包配置文件
  * @FilePath: /like/vue.config.js
  */
@@ -24,7 +24,7 @@ module.exports = {
     },
   },
   configureWebpack: {
-    devtool: "source-map",
+    devtool: isDev ? "source-map" : undefined,
   },
   lintOnSave: isDev,
   productionSourceMap: isDev,
