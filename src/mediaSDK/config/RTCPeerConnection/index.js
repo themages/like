@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-05-30 19:22:44
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-05-30 22:11:40
+ * @LastEditTime: 2021-05-30 22:55:36
  * @Description: 由本地计算机到远端的WebRTC连接的创建，保持，监控，关闭方法的实现。
  * @FilePath: /like/src/mediaSDK/config/RTCPeerConnection/index.js
  */
@@ -66,4 +66,7 @@ export function getTracks(obj) {
 }
 export function addTrack(track) {
   return pc.addTrack(track);
+}
+export function closePublisher() {
+  return pc.stop();
 }
