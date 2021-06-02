@@ -16,8 +16,10 @@
   },
   "main": "background.js",
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "electron-updater": "^4.3.8",
+    "qs": "^6.10.1",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
