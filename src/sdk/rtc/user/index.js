@@ -2,9 +2,9 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-04-26 23:32:50
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-05-31 17:54:09
+ * @LastEditTime: 2021-06-02 15:26:42
  * @Description: 获取用户媒体流
- * @FilePath: /like/src/mediaSDK/config/userMedia/index.js
+ * @FilePath: /like/src/sdk/rtc/user/index.js
  */
 
 export default function mediaStream(obj) {

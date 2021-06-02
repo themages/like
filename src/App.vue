@@ -14,7 +14,7 @@
 // 内部模块
 // 1. 组件 2. vuex vue指令 3. 类方法 工具函数
 import { postData } from "@/fetch/index";
-import { getUserDevices, getUserMedia } from "@/mediaSDK/sdk/index";
+import { getUserDevices, getUserMedia } from "@/sdk/index";
 export default {
   name: "App",
   data() {

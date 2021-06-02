@@ -2,9 +2,9 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-05-30 16:09:34
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-05-30 23:09:10
+ * @LastEditTime: 2021-06-02 15:27:28
  * @Description: webRTC 实现类
- * @FilePath: /like/src/mediaSDK/sdk/index.js
+ * @FilePath: /like/src/sdk/index.js
  */
 // import {
 //   createPeerConnection,
@@ -16,9 +16,9 @@
 //   closePublisher,
 //   getTracks,
 //   addTrack,
-// } from "@/mediaSDK/config/RTCPeerConnection/index";
-import enumDevices from "@/mediaSDK/config/devices/index";
-import mediaStream from "@/mediaSDK/config/userMedia/index";
+// } from "@/sdk/config/pc/index";
+import enumDevices from "@/sdk/rtc/devices/index";
+import mediaStream from "@/sdk/rtc/user/index";
 
 export function getUserDevices(obj = {}) {
   const { handler } = obj;
@@ -35,3 +35,5 @@ export function startPublishingStream() {}
 export function stopPublishingStream() {}
 export function startPlayingStream() {}
 export function stopPlayingStream() {}
+
+export function listener() {}

@@ -4,7 +4,7 @@
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
  * @LastEditTime: 2021-05-30 19:53:14
  * @Description: 媒体约束属性
- * @FilePath: /like/src/mediaSDK/config/devices/constraints.js
+ * @FilePath: /like/src/sdk/rtc/devices/constraints.js
  */
 
 export default function constraints(obj) {
