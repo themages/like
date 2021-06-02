@@ -16,6 +16,8 @@ export default function mediaStream(obj) {
       obj.handler(null, stream);
     })
     .catch((err) => {
+      // err.name === "ConstraintNotSatisfiedError"
+      // is not supported by your device
       obj.handler(err);
     });
 }

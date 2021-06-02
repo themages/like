@@ -2,14 +2,14 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-05-30 19:22:44
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-02 15:28:16
+ * @LastEditTime: 2021-06-02 23:49:02
  * @Description: 由本地计算机到远端的WebRTC连接的创建，保持，监控，关闭方法的实现。
  * @FilePath: /like/src/sdk/rtc/pc/index.js
  */
 let pc = null;
 export function createPeerConnection() {
   // https://developer.mozilla.org/zh-CN/docs/Web/API/RTCPeerConnection
-  pc = new RTCPeerConnection(null);
+  pc = new RTCPeerConnection();
 }
 export function createOffer(obj) {
   return pc.createOffer(
@@ -18,8 +18,7 @@ export function createOffer(obj) {
     },
     function (error) {
       obj.handler(error);
-    },
-    obj.options || false
+    }
   );
 }
 export function createAnswer(obj) {
@@ -29,8 +28,7 @@ export function createAnswer(obj) {
     },
     function (error) {
       obj.handler(error);
-    },
-    obj.options || true
+    }
   );
 }
 export function setLocalDescription(obj) {
