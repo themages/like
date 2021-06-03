@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-03 15:08:08
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-03 18:02:10
+ * @LastEditTime: 2021-06-03 19:57:21
  * @Description: localStream 本地推流类方法
  * @FilePath: /like/src/sdk/local.js
  */
@@ -49,6 +49,18 @@ export default class Local {
 
   startPublishingStream(obj = {}) {
     const { handler, constraints, callback } = obj;
+    this.remote.addTransceiver({
+      trackOrKind: "audio",
+      init: {
+        direction: "sendonly",
+      },
+    });
+    this.remote.addTransceiver({
+      trackOrKind: "video",
+      init: {
+        direction: "sendonly",
+      },
+    });
     createLocalStream({
       constraints,
       handler: (err, mediaStream) => {
