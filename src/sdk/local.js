@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-03 15:08:08
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-03 19:57:21
+ * @LastEditTime: 2021-06-03 20:06:48
  * @Description: localStream 本地推流类方法
  * @FilePath: /like/src/sdk/local.js
  */
@@ -10,15 +10,15 @@ import Peer from "@/sdk/rtc/pc/index";
 import { createLocalStream, postData } from "@/sdk/common.js";
 export default class Local {
   constructor() {
-    this.localPeer = new Peer();
+    this.local = new Peer();
   }
 
   createLocalOffer(obj = {}) {
     const { handler } = obj;
-    this.localPeer.createOffer({
+    this.local.createOffer({
       handler: (err, offer) => {
         if (err) return handler(err);
-        this.localPeer.setLocalDescription({
+        this.local.setLocalDescription({
           offer,
           handler: (err) => {
             handler(err, offer);
@@ -34,8 +34,8 @@ export default class Local {
       data,
       handler: (err, res) => {
         if (err) return handler(err);
-        this.localPeer.setRemoteDescription({
-          offer: this.localPeer.sessionDescription({
+        this.local.setRemoteDescription({
+          offer: this.local.sessionDescription({
             answer: {
               type: "answer",
               sdp: res.sdp,
@@ -49,13 +49,13 @@ export default class Local {
 
   startPublishingStream(obj = {}) {
     const { handler, constraints, callback } = obj;
-    this.remote.addTransceiver({
+    this.local.addTransceiver({
       trackOrKind: "audio",
       init: {
         direction: "sendonly",
       },
     });
-    this.remote.addTransceiver({
+    this.local.addTransceiver({
       trackOrKind: "video",
       init: {
         direction: "sendonly",
@@ -87,9 +87,9 @@ export default class Local {
 
   eachTrack(obj = {}) {
     const { mediaStream } = obj;
-    const tracks = this.localPeer.getTracks({ mediaStream });
+    const tracks = this.local.getTracks({ mediaStream });
     tracks.forEach((track) => {
-      this.localPeer.addTrack(track);
+      this.local.addTrack(track);
     });
   }
 
