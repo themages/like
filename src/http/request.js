@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-02 17:33:03
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-02 17:41:55
+ * @LastEditTime: 2021-06-03 16:08:04
  * @Description: axios 实例对象
  * @FilePath: /like/src/http/request.js
  */
@@ -26,7 +26,16 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   function (response) {
     // 2xx 范围内的状态码都会触发该函数。
-    // 对响应数据做点什么
+    console.log("response: %O", response);
+    if (response.status === 200) {
+      const data = response.data;
+      // 针对 srs 接口返回的数据处理
+      if (data.code) {
+        return Promise.reject(data);
+      }
+      // 对响应数据做点什么
+      return data;
+    }
     return response;
   },
   function (error) {
