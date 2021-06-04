@@ -2,17 +2,22 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-03 15:08:08
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-03 20:06:48
+ * @LastEditTime: 2021-06-04 14:52:43
  * @Description: localStream 本地推流类方法
  * @FilePath: /like/src/sdk/local.js
  */
 import Peer from "@/sdk/rtc/pc/index";
 import { createLocalStream, postData } from "@/sdk/common.js";
 export default class Local {
-  constructor() {
+  constructor(obj = {}) {
+    const { serve } = obj;
     this.local = new Peer();
+    this.serve = serve || {
+      api: "http://tv.canicode.cn:1985/rtc/v1/publish/",
+      streamurl: "webrtc://tv.canicode.cn/live/one",
+      clientip: null,
+    };
   }
-
   createLocalOffer(obj = {}) {
     const { handler } = obj;
     this.local.createOffer({
@@ -27,7 +32,6 @@ export default class Local {
       },
     });
   }
-
   createRemoteAnswer(obj = {}) {
     const { handler, data } = obj;
     postData({
@@ -36,19 +40,15 @@ export default class Local {
         if (err) return handler(err);
         this.local.setRemoteDescription({
           offer: this.local.sessionDescription({
-            answer: {
-              type: "answer",
-              sdp: res.sdp,
-            },
+            type: "answer",
+            sdp: res.sdp,
           }),
           handler,
         });
       },
     });
   }
-
-  startPublishingStream(obj = {}) {
-    const { handler, constraints, callback } = obj;
+  addTransceiver() {
     this.local.addTransceiver({
       trackOrKind: "audio",
       init: {
@@ -61,33 +61,40 @@ export default class Local {
         direction: "sendonly",
       },
     });
+  }
+  startPublishingStream(obj = {}) {
+    const { handler, constraints, callback } = obj;
+    this.addTransceiver();
     createLocalStream({
       constraints,
       handler: (err, mediaStream) => {
         if (err) return handler(err);
         callback && callback(mediaStream);
-        this.eachTrack({ mediaStream });
-        this.createLocalOffer({
-          handler: (err, offer) => {
-            if (err) return handler(err);
-            this.createRemoteAnswer({
-              data: {
-                api: "http://tv.canicode.cn:1985/rtc/v1/publish/",
-                streamurl: "webrtc://tv.canicode.cn/live/one",
-                clientip: null,
-                sdp: offer.sdp,
-              },
-              handler,
-            });
+        this.eachTrack(mediaStream);
+        this.offerToAnswer({ handler });
+      },
+    });
+  }
+  offerToAnswer(obj = {}) {
+    const { handler } = obj;
+    this.createLocalOffer({
+      handler: (err, offer) => {
+        if (err) return handler(err);
+        const { api, streamurl, clientip } = this.serve;
+        this.createRemoteAnswer({
+          data: {
+            api,
+            streamurl,
+            clientip,
+            sdp: offer.sdp,
           },
+          handler,
         });
       },
     });
   }
-
-  eachTrack(obj = {}) {
-    const { mediaStream } = obj;
-    const tracks = this.local.getTracks({ mediaStream });
+  eachTrack(stream) {
+    const tracks = this.local.getTracks(stream);
     tracks.forEach((track) => {
       this.local.addTrack(track);
     });
