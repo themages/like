@@ -5,7 +5,7 @@
   </div> -->
   <div>
     <video autoplay playsinline id="player" muted></video>
-    <video autoplay playsinline id="remote" muted></video>
+    <video autoplay playsinline id="remote"></video>
   </div>
   <div>
     <button @click.stop="closeVideoTrack">关闭/恢复视频track</button>
