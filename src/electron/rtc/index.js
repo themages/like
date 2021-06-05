@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-05 23:29:34
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-05 23:40:36
+ * @LastEditTime: 2021-06-05 23:45:18
  * @Description: rtc 推拉流相关
  * @FilePath: /like/src/electron/rtc/index.js
  */
@@ -12,8 +12,8 @@ export function getScreenStream(obj = {}) {
   desktopCapturer
     .getSources({ types: ["window", "screen"] })
     .then((sources) => {
-      navigator.mediaDevices.getUserMedia(
-        {
+      navigator.mediaDevices
+        .getUserMedia({
           audio: false,
           video: {
             mandatory: {
@@ -23,12 +23,13 @@ export function getScreenStream(obj = {}) {
               maxHeight: window.screen.height,
             },
           },
-        },
-        (stream) => {
+        })
+        .then((stream) => {
           handler(null, stream);
-        },
-        handler
-      );
+        })
+        // err.name === "ConstraintNotSatisfiedError"
+        // is not supported by your device
+        .catch(handler);
     })
     .catch(handler);
 }
