@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-05-30 19:22:44
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-04 14:21:00
+ * @LastEditTime: 2021-06-04 15:14:02
  * @Description: 由本地计算机到远端的WebRTC连接的创建，保持，监控，关闭方法的实现。
  * @FilePath: /like/src/sdk/rtc/pc/index.js
  */
@@ -43,15 +43,6 @@ export default class Peer {
   addTransceiver(obj) {
     const { trackOrKind, init } = obj;
     this.pc.addTransceiver(trackOrKind, init);
-  }
-  getTracks(stream) {
-    return stream.getTracks();
-  }
-  getAudioTracks(stream) {
-    return stream.getAudioTracks();
-  }
-  getVideoTracks(stream) {
-    return stream.getVideoTracks();
   }
   addTrack(track) {
     this.pc.addTrack(track);

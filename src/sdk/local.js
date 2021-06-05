@@ -2,20 +2,55 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-03 15:08:08
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-04 14:52:43
+ * @LastEditTime: 2021-06-05 15:20:46
  * @Description: localStream 本地推流类方法
  * @FilePath: /like/src/sdk/local.js
  */
 import Peer from "@/sdk/rtc/pc/index";
-import { createLocalStream, postData } from "@/sdk/common.js";
+import {
+  createLocalStream,
+  postData,
+  getTracks,
+  getAudioTracks,
+  getVideoTracks,
+} from "@/sdk/common.js";
 export default class Local {
-  constructor(obj = {}) {
-    const { serve } = obj;
+  constructor() {
     this.local = new Peer();
-    this.serve = serve || {
+    this.serve = {};
+    this.constraints = {};
+  }
+  setServeConfig() {
+    this.serve = {
       api: "http://tv.canicode.cn:1985/rtc/v1/publish/",
       streamurl: "webrtc://tv.canicode.cn/live/one",
-      clientip: null,
+      // clientip: null,
+    };
+  }
+  setVideoConfig(obj = {}) {
+    const { deviceId = "default", groupId } = obj;
+    this.constraints.video = {
+      aspectRatio: 1.3333333333333333,
+      deviceId,
+      frameRate: 30,
+      groupId,
+      height: 240,
+      resizeMode: "crop-and-scale",
+      width: 320,
+    };
+  }
+  setAudioConfig(obj = {}) {
+    const { deviceId = "default", groupId } = obj;
+    this.constraints.audio = {
+      autoGainControl: false,
+      channelCount: 1,
+      deviceId,
+      echoCancellation: false,
+      groupId,
+      latency: 0.002666,
+      noiseSuppression: false,
+      sampleRate: 96000,
+      sampleSize: 16,
     };
   }
   createLocalOffer(obj = {}) {
@@ -61,9 +96,12 @@ export default class Local {
         direction: "sendonly",
       },
     });
+    this.setVideoConfig();
+    this.setAudioConfig();
+    this.setServeConfig();
   }
   startPublishingStream(obj = {}) {
-    const { handler, constraints, callback } = obj;
+    const { handler, constraints = this.constraints, callback } = obj;
     this.addTransceiver();
     createLocalStream({
       constraints,
@@ -94,10 +132,16 @@ export default class Local {
     });
   }
   eachTrack(stream) {
-    const tracks = this.local.getTracks(stream);
+    const tracks = getTracks(stream);
     tracks.forEach((track) => {
       this.local.addTrack(track);
     });
+  }
+  getAVTracks(stream) {
+    return {
+      audioTrack: getAudioTracks(stream),
+      videoTrack: getVideoTracks(stream),
+    };
   }
 
   startPreview() {}
