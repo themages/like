@@ -16,6 +16,7 @@
 // 1. 组件 2. vuex vue指令 3. 类方法 工具函数
 import Local from "@/sdk/local.js";
 import Remote from "@/sdk/remote.js";
+import getConstraints from "@/sdk/rtc/devices/constraints.js";
 export default {
   name: "App",
   data() {
@@ -23,6 +24,11 @@ export default {
   },
   created() {
     this.initSDK();
+    getConstraints({
+      handler(err, constraints) {
+        console.log(err, constraints);
+      },
+    });
   },
   methods: {
     initSDK() {
@@ -35,8 +41,8 @@ export default {
         callback(stream) {
           const player = document.querySelector("video#player");
           player.srcObject = stream;
+          console.log("推流 track: %O", local.getAVTracks(stream));
         },
-        constraints: { video: true, audio: true },
       });
     },
     publish() {
@@ -47,8 +53,9 @@ export default {
         },
         callback(stream) {
           console.log("拉流正常: %O", stream);
-          const remote = document.getElementById("remote");
-          remote.srcObject = stream;
+          const playing = document.getElementById("remote");
+          console.log("拉流 track: %O", remote.getAVTracks(stream));
+          playing.srcObject = stream;
         },
       });
     },
