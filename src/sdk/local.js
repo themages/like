@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-03 15:08:08
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-05 15:20:46
+ * @LastEditTime: 2021-06-05 17:21:54
  * @Description: localStream 本地推流类方法
  * @FilePath: /like/src/sdk/local.js
  */
@@ -41,15 +41,19 @@ export default class Local {
   }
   setAudioConfig(obj = {}) {
     const { deviceId = "default", groupId } = obj;
+    // https://developer.mozilla.org/zh-CN/docs/Web/API/AudioContext
+    const audioCtx = new AudioContext();
+    const sampleRate = audioCtx.sampleRate;
+    audioCtx.close();
     this.constraints.audio = {
-      autoGainControl: false,
+      autoGainControl: true,
       channelCount: 1,
       deviceId,
-      echoCancellation: false,
+      echoCancellation: true,
       groupId,
       latency: 0.002666,
-      noiseSuppression: false,
-      sampleRate: 96000,
+      noiseSuppression: true,
+      sampleRate,
       sampleSize: 16,
     };
   }
@@ -142,6 +146,9 @@ export default class Local {
       audioTrack: getAudioTracks(stream),
       videoTrack: getVideoTracks(stream),
     };
+  }
+  getSender() {
+    return this.local.getSenders();
   }
 
   startPreview() {}

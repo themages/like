@@ -1,13 +1,19 @@
 <template>
-  <div id="nav" :class="$style.nav">
+  <!-- <div id="nav" :class="$style.nav">
     <router-link to="/home">Home</router-link> |
     <router-link to="/about">About</router-link>
-  </div>
+  </div> -->
   <div>
     <video autoplay playsinline id="player" muted></video>
     <video autoplay playsinline id="remote" muted></video>
   </div>
-  <router-view />
+  <div>
+    <button @click.stop="closeVideoTrack">关闭/恢复视频track</button>
+    <button @click.stop="closeAudioTrack">关闭/恢复音频track</button>
+    <button @click.stop="stopVideoTrack">停止视频track</button>
+    <button @click.stop="stopAudioTrack">停止音频track</button>
+  </div>
+  <!-- <router-view /> -->
 </template>
 <script>
 // 外部模块
@@ -17,10 +23,21 @@
 import Local from "@/sdk/local.js";
 import Remote from "@/sdk/remote.js";
 import getConstraints from "@/sdk/rtc/devices/constraints.js";
+import {
+  closeVideoTrack,
+  closeAudioTrack,
+  stopVideoTrack,
+  stopAudioTrack,
+} from "@/sdk/common.js";
 export default {
   name: "App",
   data() {
-    return {};
+    return {
+      localStream: null,
+      local: null,
+      closeVideo: true,
+      closeAudio: true,
+    };
   },
   created() {
     this.initSDK();
@@ -31,17 +48,39 @@ export default {
     });
   },
   methods: {
+    closeVideoTrack() {
+      this.closeVideo = !this.closeVideo;
+      closeVideoTrack({
+        stream: this.localStream,
+        enabled: this.closeVideo,
+      });
+    },
+    closeAudioTrack() {
+      this.closeAudio = !this.closeAudio;
+      closeAudioTrack({
+        stream: this.localStream,
+        enabled: this.closeAudio,
+      });
+    },
+    stopVideoTrack() {
+      stopVideoTrack(this.localStream);
+    },
+    stopAudioTrack() {
+      stopAudioTrack(this.localStream);
+    },
     initSDK() {
-      const local = new Local();
-      local.startPublishingStream({
+      this.local = new Local();
+      this.local.startPublishingStream({
         handler: (err) => {
           if (err) return console.error("err: %O", err);
+          console.log(this.local.getSender());
           this.publish();
         },
-        callback(stream) {
+        callback: (stream) => {
+          this.localStream = stream;
           const player = document.querySelector("video#player");
           player.srcObject = stream;
-          console.log("推流 track: %O", local.getAVTracks(stream));
+          console.log("推流 track: %O", this.local.getAVTracks(stream));
         },
       });
     },

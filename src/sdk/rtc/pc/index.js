@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-05-30 19:22:44
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-04 15:14:02
+ * @LastEditTime: 2021-06-05 17:15:55
  * @Description: 由本地计算机到远端的WebRTC连接的创建，保持，监控，关闭方法的实现。
  * @FilePath: /like/src/sdk/rtc/pc/index.js
  */
@@ -49,6 +49,11 @@ export default class Peer {
   }
   closePC() {
     this.pc.close();
+  }
+  getSenders() {
+    // 切换摄像头
+    // https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/replaceTrack
+    return this.pc.getSenders();
   }
   onaddstream(callback) {
     this.pc.onaddstream = function (event) {

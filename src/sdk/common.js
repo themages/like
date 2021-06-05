@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-03 15:49:51
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-04 15:59:50
+ * @LastEditTime: 2021-06-05 16:40:03
  * @Description: sdk 公共模块
  * @FilePath: /like/src/sdk/common.js
  */
@@ -36,4 +36,30 @@ export function getAudioTracks(stream) {
 }
 export function getVideoTracks(stream) {
   return stream.getVideoTracks();
+}
+export function stopVideoTrack(stream) {
+  const tracks = getVideoTracks(stream);
+  tracks.forEach(function (track) {
+    track.stop();
+  });
+}
+export function stopAudioTrack(stream) {
+  const tracks = getAudioTracks(stream);
+  tracks.forEach(function (track) {
+    track.stop();
+  });
+}
+export function closeVideoTrack(obj = {}) {
+  const { stream, enabled = true } = obj;
+  const tracks = getVideoTracks(stream);
+  tracks.forEach(function (track) {
+    track.enabled = enabled;
+  });
+}
+export function closeAudioTrack(obj = {}) {
+  const { stream, enabled = true } = obj;
+  const tracks = getAudioTracks(stream);
+  tracks.forEach(function (track) {
+    track.enabled = enabled;
+  });
 }
