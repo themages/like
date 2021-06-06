@@ -23,6 +23,9 @@
 import Local from "@/sdk/local.js";
 import Remote from "@/sdk/remote.js";
 import getConstraints from "@/sdk/rtc/devices/constraints.js";
+
+import { io } from "socket.io-client";
+
 import {
   closeVideoTrack,
   closeAudioTrack,
@@ -40,7 +43,9 @@ export default {
     };
   },
   created() {
-    this.initSDK();
+    this.socket();
+    this.socket2();
+    // this.initSDK();
     getConstraints({
       handler(err, constraints) {
         console.log(err, constraints);
@@ -48,6 +53,48 @@ export default {
     });
   },
   methods: {
+    socket() {
+      const socket = io("ws://localhost:3700", {
+        transports: ["websocket"],
+      });
+      socket.on("connect", () => {
+        console.log("connect", socket.id);
+      });
+      socket.on("disconnect", () => {
+        console.log("disconnect", socket.disconnected);
+      });
+      socket.on("joined", (room, id) => {
+        console.log("joined room", room, id);
+      });
+      socket.on("leaved", (room, id) => {
+        console.log("leaved room", room, id);
+      });
+      socket.on("message", (room, id, data) => {
+        console.log("message", room, id, data);
+      });
+      socket.emit("join", "123");
+    },
+    socket2() {
+      const socket = io("ws://localhost:3700", {
+        transports: ["websocket"],
+      });
+      socket.on("connect", () => {
+        console.log("connect", socket.id);
+      });
+      socket.on("disconnect", () => {
+        console.log("disconnect", socket.disconnected);
+      });
+      socket.on("joined", (room, id) => {
+        console.log("joined room", room, id);
+      });
+      socket.on("leaved", (room, id) => {
+        console.log("leaved room", room, id);
+      });
+      socket.on("message", (room, id, data) => {
+        console.log("message", room, id, data);
+      });
+      socket.emit("join", "123");
+    },
     closeVideoTrack() {
       this.closeVideo = !this.closeVideo;
       closeVideoTrack({
