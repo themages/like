@@ -13,4 +13,4 @@ WebRTC音视频直播应用
 2. 远程桌面工具
 
 ## 在线体验
-[like视频聊天室](https://tv.canicode.cn)
+[like视频聊天室](https://tv.canicode.cn)：可以加入同一个房间号，目前不限制人数。
