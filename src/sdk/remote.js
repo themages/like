@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-03 15:41:01
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-08 15:12:24
+ * @LastEditTime: 2021-06-08 19:52:52
  * @Description: remoteStream 本地拉流类方法
  * @FilePath: /like/src/sdk/remote.js
  */
@@ -17,7 +17,7 @@ export default class Remote {
     const { url } = obj; // ip,
     this.serve = {
       // api: `http://${ip}:1985/rtc/v1/play/`,
-      api: "http://118.193.36.25:1985/rtc/v1/play/",
+      api: "https://tv.canicode.cn/play/",
       streamurl: `webrtc://118.193.36.25/${url}`,
       // clientip: null,
     };

@@ -24,7 +24,7 @@ export default class Local {
     const { url } = obj; // ip,
     this.serve = {
       // api: `http://${ip}:1985/rtc/v1/publish/`,
-      api: "http://118.193.36.25:1985/rtc/v1/publish/",
+      api: "https://tv.canicode.cn/publish/",
       streamurl: `webrtc://118.193.36.25/${url}`,
       // clientip: null,
     };
