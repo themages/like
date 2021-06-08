@@ -19,7 +19,7 @@
       </select>
     </div> -->
       <div :class="$style.btn">
-        <button :disabled="room ? false : true" @click="join">进入房间</button>
+        <router-link v-if="room" :to="`/room/${room}`">进入房间</router-link>
       </div>
     </div>
   </div>
