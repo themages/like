@@ -54,7 +54,7 @@ export default {
   methods: {
     socket() {
       this.socketIo = io("https://tv.canicode.cn/socket.io", {
-        transports: ["websocket"],
+        // transports: ["websocket"],
       });
       this.socketIo.on("connect", () => {
         console.log("connect", this.socketIo.id);
