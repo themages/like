@@ -5,6 +5,8 @@
   "author": "zengxingqi<zengxingqi.com>",
   "description": "An audio and video communication live application",
   "scripts": {
+    "web:serve": "vue-cli-service serve",
+    "web:build": "vue-cli-service build",
     "lint": "vue-cli-service lint -y",
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",

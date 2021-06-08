@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-03 15:41:01
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-05 15:06:31
+ * @LastEditTime: 2021-06-08 15:12:24
  * @Description: remoteStream 本地拉流类方法
  * @FilePath: /like/src/sdk/remote.js
  */
@@ -13,10 +13,12 @@ export default class Remote {
     this.remote = new Peer();
     this.serve = {};
   }
-  setServeConfig() {
+  setServeConfig(obj = {}) {
+    const { url } = obj; // ip,
     this.serve = {
-      api: "http://tv.canicode.cn:1985/rtc/v1/play/",
-      streamurl: "webrtc://tv.canicode.cn/live/livestream",
+      // api: `http://${ip}:1985/rtc/v1/play/`,
+      api: "http://118.193.36.25:1985/rtc/v1/play/",
+      streamurl: `webrtc://118.193.36.25/${url}`,
       // clientip: null,
     };
   }
@@ -52,7 +54,7 @@ export default class Remote {
     });
   }
   addTransceiver() {
-    this.setServeConfig();
+    // this.setServeConfig();
     this.remote.addTransceiver({
       trackOrKind: "audio",
       init: {
@@ -95,5 +97,7 @@ export default class Remote {
       videoTrack: getVideoTracks(stream),
     };
   }
-  stopPlayingStream() {}
+  stopPlayingStream() {
+    this.remote.closePC();
+  }
 }

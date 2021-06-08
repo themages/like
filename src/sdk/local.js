@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-03 15:08:08
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-05 17:21:54
+ * @LastEditTime: 2021-06-08 11:17:54
  * @Description: localStream 本地推流类方法
  * @FilePath: /like/src/sdk/local.js
  */
@@ -20,10 +20,12 @@ export default class Local {
     this.serve = {};
     this.constraints = {};
   }
-  setServeConfig() {
+  setServeConfig(obj = {}) {
+    const { url } = obj; // ip,
     this.serve = {
-      api: "http://tv.canicode.cn:1985/rtc/v1/publish/",
-      streamurl: "webrtc://tv.canicode.cn/live/one",
+      // api: `http://${ip}:1985/rtc/v1/publish/`,
+      api: "http://118.193.36.25:1985/rtc/v1/publish/",
+      streamurl: `webrtc://118.193.36.25/${url}`,
       // clientip: null,
     };
   }
@@ -102,7 +104,7 @@ export default class Local {
     });
     this.setVideoConfig();
     this.setAudioConfig();
-    this.setServeConfig();
+    // this.setServeConfig();
   }
   startPublishingStream(obj = {}) {
     const { handler, constraints = this.constraints, callback } = obj;
