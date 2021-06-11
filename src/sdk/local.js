@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-03 15:08:08
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-11 14:32:47
+ * @LastEditTime: 2021-06-11 15:01:59
  * @Description: localStream 本地推流类方法
  * @FilePath: /like/src/sdk/local.js
  */
@@ -35,6 +35,7 @@ export default class Local {
       aspectRatio: 1.3333333333333333,
       deviceId,
       frameRate: 30,
+      facingMode: "user",
       groupId,
       height: 240,
       resizeMode: "crop-and-scale",
