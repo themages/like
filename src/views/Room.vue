@@ -16,6 +16,7 @@
   </div>
 </template>
 <script>
+import VConsole from "vconsole";
 import Local from "@/sdk/local.js";
 import Remote from "@/sdk/remote.js";
 // import getConstraints from "@/sdk/rtc/devices/constraints.js";
@@ -44,9 +45,11 @@ export default {
       audioinput: [],
       audiooutput: [],
       videoinput: [],
+      vConsole: null,
     };
   },
   created() {
+    this.vConsole = new VConsole();
     this.socket();
     this.gotDevices();
     // this.initSDK();
@@ -181,6 +184,9 @@ export default {
         },
       });
     },
+  },
+  beforeUnmount() {
+    this.vConsole.destroy();
   },
 };
 </script>
