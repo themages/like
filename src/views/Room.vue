@@ -40,6 +40,7 @@ export default {
       localStream: null,
       local: null,
       remote: {},
+      cid: null,
       closeVideo: true,
       closeAudio: true,
       audioinput: [],
@@ -71,6 +72,14 @@ export default {
       });
       this.socketIo.on("disconnect", () => {
         console.log("disconnect", this.socketIo.disconnected);
+        if (this.socketIo.disconnected) {
+          this.stopVideoTrack();
+          this.stopAudioTrack();
+          if (this.local) {
+            this.local.stopPublishingStream();
+            this.local = null;
+          }
+        }
       });
       this.socketIo.on("joined", (room, users) => {
         console.log("joined room", room, users);
@@ -96,9 +105,7 @@ export default {
         this.all -= 1;
         if (this.remote[id]) {
           this.remote[id].stopPlayingStream();
-          const dom = document.getElementById(id);
-          dom.srcObject = null;
-          dom.remove();
+          this.removeViewId(id);
           delete this.remote[id];
         }
       });
@@ -148,6 +155,11 @@ export default {
     },
     remotePlay(obj = {}) {
       const { url } = obj;
+      if (this.remote[url]) {
+        this.remote[url].stopPlayingStream();
+        this.removeViewId(url);
+        delete this.remote[url];
+      }
       this.remote[url] = new Remote();
       this.remote[url].setServeConfig({ url });
       this.remote[url].startPlayingStream({
@@ -167,6 +179,11 @@ export default {
           }, 1000);
         },
       });
+    },
+    removeViewId(id) {
+      const dom = document.getElementById(id);
+      dom.srcObject = null;
+      dom.remove();
     },
     gotDevices() {
       enumerateDevices({
