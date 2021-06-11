@@ -28,6 +28,7 @@ import {
   stopVideoTrack,
   stopAudioTrack,
 } from "@/sdk/common.js";
+import enumerateDevices from "@/sdk/rtc/devices/index";
 export default {
   name: "room",
   props: ["id"],
@@ -40,10 +41,14 @@ export default {
       remote: {},
       closeVideo: true,
       closeAudio: true,
+      audioinput: [],
+      audiooutput: [],
+      videoinput: [],
     };
   },
   created() {
     this.socket();
+    this.gotDevices();
     // this.initSDK();
     // getConstraints({
     //   handler(err, constraints) {
@@ -122,6 +127,8 @@ export default {
       const { url, success } = obj;
       this.local = new Local();
       this.local.setServeConfig({ url });
+      this.local.setVideoConfig(this.videoinput[0]);
+      this.local.setAudioConfig(this.audioinput[0]);
       this.local.startPublishingStream({
         handler: (err) => {
           if (err) return console.error("err: %O", err);
@@ -155,6 +162,22 @@ export default {
             console.log("waiting");
             remoteVideo.srcObject = stream;
           }, 1000);
+        },
+      });
+    },
+    gotDevices() {
+      enumerateDevices({
+        handler: (err, devices) => {
+          console.log(devices);
+          devices.forEach((device) => {
+            if (device.kind === "audioinput") {
+              this.audioinput.push(device);
+            } else if (device.kind === "audiooutput") {
+              this.audiooutput.push(device);
+            } else if (device.kind === "videoinput") {
+              this.videoinput.push(device);
+            }
+          });
         },
       });
     },

@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-06-03 15:08:08
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-06-08 11:17:54
+ * @LastEditTime: 2021-06-11 14:32:47
  * @Description: localStream 本地推流类方法
  * @FilePath: /like/src/sdk/local.js
  */
@@ -102,8 +102,8 @@ export default class Local {
         direction: "sendonly",
       },
     });
-    this.setVideoConfig();
-    this.setAudioConfig();
+    // this.setVideoConfig();
+    // this.setAudioConfig();
     // this.setServeConfig();
   }
   startPublishingStream(obj = {}) {
