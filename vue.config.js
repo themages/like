@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-09-16 20:27:13
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-09-16 22:06:24
+ * @LastEditTime: 2021-09-17 00:31:03
  * @Description: 构建、打包配置文件
  * @FilePath: /like/vue.config.js
  */
@@ -42,7 +42,7 @@ module.exports = {
   pluginOptions: {
     electronBuilder: {
       mainProcessFile: "src/background.js",
-      externals: [],
+      externals: ["trtc-electron-sdk"],
       nodeModulesPath: ["./node_modules"],
       customFileProtocol: "likelive://./",
       builderOptions: {
@@ -53,18 +53,20 @@ module.exports = {
         directories: {
           output: "./dist_electron", // 输出文件路径
         },
-        icon: "build/icons/app.ico",
-        target: [
-          {
-            target: "nsis",
-            arch: [
-              // "x64" // 64位
-              "ia32", // 32位
-            ],
-          },
-        ],
-        artifactName,
-        // sign,
+        win: {
+          icon: "build/icons/app.ico",
+          target: [
+            {
+              target: "nsis",
+              arch: [
+                // "x64" // 64位
+                "ia32", // 32位
+              ],
+            },
+          ],
+          artifactName,
+          // sign,
+        },
         mac: {
           category: "public.app-category.productivity",
           icon: "build/icons/app.icns",

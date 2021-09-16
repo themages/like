@@ -21,6 +21,7 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.5",
+    "trtc-electron-sdk": "^8.9.102",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
@@ -43,6 +44,7 @@
     "eslint-plugin-vue": "^7.0.0",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
+    "native-ext-loader": "^2.3.0",
     "png-to-ico": "^2.1.2",
     "prettier": "^2.2.1",
     "sass": "^1.26.5",
