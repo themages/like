@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-09-16 20:27:13
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-09-17 00:31:03
+ * @LastEditTime: 2021-09-17 01:06:07
  * @Description: 构建、打包配置文件
  * @FilePath: /like/vue.config.js
  */
@@ -101,8 +101,8 @@ module.exports = {
             },
           ],
           window: {
-            width: 640,
-            height: 480,
+            width: 540,
+            height: 380,
           },
         },
         nsis: {
