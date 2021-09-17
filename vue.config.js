@@ -34,7 +34,6 @@ module.exports = {
         localsConvention: "asIs",
       },
       sass: {
-        // 向所有 Sass/Less 样式传入共享的全局变量
         prependData: `@import "~@/assets/style/index.scss";`,
       },
     },

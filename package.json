@@ -47,7 +47,7 @@
     "native-ext-loader": "^2.3.0",
     "png-to-ico": "^2.1.2",
     "prettier": "^2.2.1",
-    "sass": "^1.26.5",
+    "sass": "^1.41.1",
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-electron-builder": "~2.1.1"
   },
