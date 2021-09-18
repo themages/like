@@ -2,11 +2,11 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-09-19 00:37:27
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-09-19 00:52:27
+ * @LastEditTime: 2021-09-19 02:35:10
  * @Description: 获取系统首选项
  * @FilePath: /like/src/native/api/systemPreferences.js
  */
-const { systemPreferences } = require("electron");
+const { systemPreferences } = window.require("electron");
 
 // 支持 macOS + Windows 系统
 /**
