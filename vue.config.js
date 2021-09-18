@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-09-16 20:27:13
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-09-17 01:06:07
+ * @LastEditTime: 2021-09-19 02:51:37
  * @Description: 构建、打包配置文件
  * @FilePath: /like/vue.config.js
  */
@@ -89,13 +89,13 @@ module.exports = {
           contents: [
             {
               x: 410,
-              y: 190,
+              y: 180,
               type: "link",
               path: "/Applications",
             },
             {
               x: 130,
-              y: 190,
+              y: 180,
               type: "file",
             },
           ],
