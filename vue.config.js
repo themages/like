@@ -10,7 +10,7 @@ const pkg = require("./package.json");
 const isDev = process.env.NODE_ENV !== "production";
 const appId = "themages.canicode.cn";
 const copyright = "Copyright canicode © 2021";
-const artifactName = "${productName}_${version}.${ext}";
+const artifactName = "${productName}_${version}_${os}_${arch}.${ext}";
 
 module.exports = {
   devServer: {
