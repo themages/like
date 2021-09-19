@@ -20,31 +20,32 @@ export function screenSharing() {
 
 async function handlerSources(sources) {
   for (const source of sources) {
-    if (source.name === "Entire Screen") {
-      try {
-        const stream = await getUserMedia({
-          audio: false,
-          video: {
-            mandatory: {
-              chromeMediaSource: "desktop",
-              chromeMediaSourceId: source.id,
-              minWidth: 1280,
-              maxWidth: 1280,
-              minHeight: 720,
-              maxHeight: 720,
-            },
+    // if (source.name === "Entire Screen" || source.name === "Screen 2") {
+    try {
+      const stream = await getUserMedia({
+        audio: false,
+        video: {
+          mandatory: {
+            chromeMediaSource: "desktop",
+            chromeMediaSourceId: source.id,
+            minWidth: 1280,
+            maxWidth: 1280,
+            minHeight: 720,
+            maxHeight: 720,
           },
-        });
-        handleStream(stream);
-      } catch (e) {
-        handleError(e);
-      }
+        },
+      });
+      handleStream(stream);
+    } catch (e) {
+      handleError(e);
     }
+    // }
+    break;
   }
 }
 
 function handleStream(stream) {
-  const video = document.querySelector("video");
+  const video = document.querySelector("#sharing");
   video.srcObject = stream;
   video.onloadedmetadata = () => video.play();
 }

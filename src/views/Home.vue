@@ -3,7 +3,7 @@
     <h1>home</h1>
     <div>trtc-sdk版本号：{{ version }}</div>
     <div>
-      <video autoplay playsinline id="video"></video>
+      <video autoplay playsinline id="sharing"></video>
     </div>
     <div>
       <button @click.stop="screenSharing">屏幕分享</button>
