@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-09-19 00:33:19
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-09-19 02:35:14
+ * @LastEditTime: 2021-09-19 16:29:24
  * @Description: 从桌面捕获音频和视频的媒体源的信息
  * @FilePath: /like/src/native/modular/desktopCapturer.js
  */
@@ -20,6 +20,3 @@ const { desktopCapturer } = window.require("electron");
 export function getSources(options) {
   return desktopCapturer.getSources(options);
 }
-// 仅支持 macOS 系统
-
-// 仅支持 Windows 系统
