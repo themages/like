@@ -3,6 +3,9 @@
     <h1>home</h1>
     <div>trtc-sdk版本号：{{ version }}</div>
     <div>
+      <button @click.stop="test_start_sdk_speed">开始测速</button>
+    </div>
+    <div>
       <video autoplay playsinline id="sharing"></video>
     </div>
     <div>
@@ -13,8 +16,9 @@
 
 <script>
 // @ is an alias to /src
-import { getSDKVersion } from "@/sdk/";
+import { getSDKVersion } from "@/sdk/trtc/log";
 import { screenSharing } from "@/features/";
+import { test_start_sdk_speed } from "@/features/test";
 export default {
   name: "Home",
   data() {
@@ -30,6 +34,7 @@ export default {
     screenSharing() {
       screenSharing();
     },
+    test_start_sdk_speed,
   },
 };
 </script>
