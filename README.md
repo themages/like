@@ -1,29 +1,4 @@
-# like
-
-## Project setup
-
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# 分支说明
+本仓库已暂停开发，仅供demo学习。
+- 前端技术栈：Vue + Electron + WebRTC + Socket.io-client + Nginx + CentOS7
+- 后端技术栈：[SRS](https://github.com/ossrs/srs) + [likesignal](https://github.com/themages/likesignal)
