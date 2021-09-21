@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-09-21 03:36:25
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-09-21 03:42:19
+ * @LastEditTime: 2021-09-21 13:45:12
  * @Description: 摄像头视频事件回调
  * @FilePath: /like/src/sdk/trtc/events/video.js
  */
@@ -22,4 +22,8 @@ export function onFirstVideoFrame(listener) {
 // 首帧本地视频数据已经被送出
 export function onSendFirstLocalVideoFrame(listener) {
   rtcCloud.on("onSendFirstLocalVideoFrame", listener);
+}
+// 截图完成时回调
+export function onSnapshotComplete(listener) {
+  rtcCloud.on("onSnapshotComplete", listener);
 }
