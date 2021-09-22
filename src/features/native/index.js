@@ -4,7 +4,7 @@
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
  * @LastEditTime: 2021-09-19 02:42:51
  * @Description: 胶水代码
- * @FilePath: /like/src/features/index.js
+ * @FilePath: /like/src/features/native/index.js
  */
 import { getUserMedia } from "@/browser/media/devices/getUserMedia";
 import { getSources } from "@/native/modular/desktopCapturer";

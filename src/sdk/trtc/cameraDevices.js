@@ -16,6 +16,6 @@ export function setCurrentCameraDevice(deviceId) {
   return rtcCloud.setCurrentCameraDevice(deviceId);
 }
 // 获取当前使用的摄像头
-export function getCurrentCameraDevice(deviceId) {
-  return rtcCloud.getCurrentCameraDevice(deviceId);
+export function getCurrentCameraDevice() {
+  return rtcCloud.getCurrentCameraDevice();
 }

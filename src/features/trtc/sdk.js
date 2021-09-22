@@ -4,7 +4,7 @@
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
  * @LastEditTime: 2021-09-21 00:11:53
  * @Description: sdk 配置参数
- * @FilePath: /like/src/features/sdk.js
+ * @FilePath: /like/src/features/trtc/sdk.js
  */
 export const appId = 1400574386;
 export const userId = "like";
