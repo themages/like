@@ -1,3 +1,11 @@
+/**
+ * @Author: 曾星旗 <me@zengxingqi.com>
+ * @Date: 2021-09-23 18:45:58
+ * @LastEditors: 曾星旗 <me@zengxingqi.com>
+ * @LastEditTime: 2021-09-23 19:12:28
+ * @Description: 设备状态记录
+ * @FilePath: /like/src/features/trtc/devices.js
+ */
 import {
   getCameraDevicesList,
   getCurrentCameraDevice,
