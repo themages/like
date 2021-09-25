@@ -26,7 +26,11 @@ import {
   test_start_local_camera,
   test_stop_local_camera,
 } from "@/features/trtc/test";
-import { device_camera_store } from "@/features/trtc/devices";
+import {
+  device_camera_store,
+  device_mic_store,
+  device_speaker_store,
+} from "@/features/trtc/devices";
 import { event_device_change } from "@/features/trtc/events";
 export default {
   name: "Home",
@@ -40,6 +44,8 @@ export default {
     this.version = getSDKVersion();
     event_device_change();
     device_camera_store();
+    device_mic_store();
+    device_speaker_store();
   },
   methods: {
     screenSharing() {

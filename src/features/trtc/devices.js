@@ -11,6 +11,16 @@ import {
   getCurrentCameraDevice,
   setCurrentCameraDevice,
 } from "@/sdk/trtc/cameraDevices";
+import {
+  getMicDevicesList,
+  getCurrentMicDevice,
+  setCurrentMicDevice,
+} from "@/sdk/trtc/micDevices";
+import {
+  getSpeakerDevicesList,
+  getCurrentSpeakerDevice,
+  setCurrentSpeakerDevice,
+} from "@/sdk/trtc/speakerDevices";
 import { getLocalItem, setLocalItem, removeLocalItem } from "@/utils/storage";
 import { stringify_devices } from "@/utils/stringify";
 import store from "@/store/";
@@ -18,6 +28,12 @@ import {
   CAMERA_CHANGE_CAMERA,
   CAMERA_CHANGE_DEVICES,
   CAMERA_CHANGE_STATUS,
+  MIC_CHANGE_MIC,
+  MIC_CHANGE_DEVICES,
+  MIC_CHANGE_STATUS,
+  SPEAKER_CHANGE_SPEAKER,
+  SPEAKER_CHANGE_DEVICES,
+  SPEAKER_CHANGE_STATUS,
 } from "@/store/types";
 import {
   CAMERA_LOCAL_KEY,
@@ -29,6 +45,7 @@ import { DEVICES_STATUS_CONSTANT } from "@/features/trtc/types";
 // 获取默认摄像头以及历史记录，从而是否更新设备记录
 export function device_camera_store() {
   const cameraDevices = device_camera_list();
+  console.log("cameraDevices: %O", cameraDevices);
   const localCamera = device_camera_local();
   // 如果有摄像头设备，使用默认设备
   let hasDefaultCamera = false;
@@ -46,8 +63,13 @@ export function device_camera_store() {
   // 保存默认摄像头设备信息
   const currentCamera = device_camera_current();
   if (!hasDefaultCamera && currentCamera) {
-    device_camera_add_local(currentCamera);
-    hasDefaultCamera = true;
+    for (const device of cameraDevices) {
+      if (currentCamera.deviceId === device.deviceId) {
+        device_camera_add_local(device);
+        hasDefaultCamera = true;
+        break;
+      }
+    }
   }
   // 更新摄像头设备状态
   store.commit(
@@ -87,7 +109,55 @@ export function device_camera_add_local(currentCamera) {
   const stringify = stringify_devices();
   return setLocalItem(CAMERA_LOCAL_KEY, stringify(currentCamera));
 }
-
+// 获取所有麦克风设备列表，并保存到 store 中
+export function device_mic_store() {
+  const micDevices = device_mic_list();
+  console.log("micDevices: %O", micDevices);
+  const localMic = device_mic_local();
+  // 如果有麦克风设备，使用默认设备
+  let hasDefaultMic = false;
+  // 历史记录的默认麦克风设备是否存在
+  if (localMic) {
+    for (const device of micDevices) {
+      if (localMic.deviceId === device.deviceId) {
+        setCurrentMicDevice(device.deviceId);
+        hasDefaultMic = true;
+        break;
+      }
+    }
+    !hasDefaultMic && device_mic_remove_local();
+  }
+  // 保存默认麦克风设备信息
+  const currentMic = device_mic_current();
+  if (!hasDefaultMic && currentMic) {
+    for (const device of micDevices) {
+      if (currentMic.deviceId === device.deviceId) {
+        device_mic_add_local(device);
+        hasDefaultMic = true;
+        break;
+      }
+    }
+  }
+  // 更新麦克风设备状态
+  store.commit(
+    MIC_CHANGE_STATUS,
+    hasDefaultMic
+      ? DEVICES_STATUS_CONSTANT.available
+      : DEVICES_STATUS_CONSTANT.unavailable
+  );
+}
+// 获取所有麦克风设备列表，并保存到 store 中
+export function device_mic_list() {
+  const micDevices = getMicDevicesList();
+  store.commit(MIC_CHANGE_DEVICES, micDevices);
+  return micDevices;
+}
+// 获取当前使用的麦克风设备信息，并保存到 store 中
+export function device_mic_current() {
+  let currentMic = getCurrentMicDevice();
+  store.commit(MIC_CHANGE_MIC, currentMic);
+  return currentMic;
+}
 // 获取麦克风记录
 export function device_mic_local() {
   const localMic = getLocalItem(MIC_LOCAL_KEY);
@@ -102,7 +172,56 @@ export function device_mic_add_local(currentMic) {
   const stringify = stringify_devices();
   return setLocalItem(MIC_LOCAL_KEY, stringify(currentMic));
 }
-
+// 获取所有扬声器设备列表，并保存到 store 中
+export function device_speaker_store() {
+  const speakerDevices = device_speaker_list();
+  console.log("speakerDevices: %O", speakerDevices);
+  const localSpeaker = device_speaker_local();
+  // 如果有麦克风设备，使用默认设备
+  let hasDefaultSpeaker = false;
+  // 历史记录的默认麦克风设备是否存在
+  if (localSpeaker) {
+    for (const device of speakerDevices) {
+      if (localSpeaker.deviceId === device.deviceId) {
+        setCurrentSpeakerDevice(device.deviceId);
+        hasDefaultSpeaker = true;
+        break;
+      }
+    }
+    !hasDefaultSpeaker && device_speaker_remove_local();
+  }
+  // 保存默认麦克风设备信息
+  const currentSpeaker = device_speaker_current();
+  if (!hasDefaultSpeaker && currentSpeaker) {
+    for (const device of speakerDevices) {
+      if (currentSpeaker.deviceId === device.deviceId) {
+        device_speaker_add_local(device);
+        hasDefaultSpeaker = true;
+        break;
+      }
+    }
+  }
+  // 更新麦克风设备状态
+  store.commit(
+    SPEAKER_CHANGE_STATUS,
+    hasDefaultSpeaker
+      ? DEVICES_STATUS_CONSTANT.available
+      : DEVICES_STATUS_CONSTANT.unavailable
+  );
+}
+// 获取所有扬声器设备列表，并保存到 store 中
+export function device_speaker_list() {
+  const speakerDevices = getSpeakerDevicesList();
+  store.commit(SPEAKER_CHANGE_DEVICES, speakerDevices);
+  return speakerDevices;
+}
+// 获取当前使用的扬声器设备信息，并保存到 store 中
+export function device_speaker_current() {
+  let currentSpeaker = getCurrentSpeakerDevice();
+  console.log("currentSpeaker: %O", currentSpeaker);
+  store.commit(SPEAKER_CHANGE_SPEAKER, currentSpeaker);
+  return currentSpeaker;
+}
 // 获取扬声器记录
 export function device_speaker_local() {
   const localSpeaker = getLocalItem(SPEAKER_LOCAL_KEY);
