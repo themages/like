@@ -15,6 +15,20 @@ import { device_camera_list } from "@/features/trtc/devices";
 import store from "@/store/";
 import { CAMERA_CHANGE_STATUS, MIC_CHANGE_STATUS } from "@/store/types";
 import { DEVICES_STATUS_CONSTANT } from "@/features/trtc/types";
+import {
+  TRTCDeviceState,
+  TRTCDeviceType,
+} from "trtc-electron-sdk/liteav/trtc_define";
+console.log(
+  "添加设备: %O, 移除设备: %O, 设备已启用: %O, 未知类型: %O, 麦克风: %O, 扬声器: %O, 摄像头: %O",
+  TRTCDeviceState.TRTCDeviceStateAdd,
+  TRTCDeviceState.TRTCDeviceStateRemove,
+  TRTCDeviceState.TRTCDeviceStateActive,
+  TRTCDeviceType.TRTCDeviceTypeUnknow,
+  TRTCDeviceType.TRTCDeviceTypeMic,
+  TRTCDeviceType.TRTCDeviceTypeSpeaker,
+  TRTCDeviceType.TRTCDeviceTypeCamera
+);
 // 摄像头、麦克风、扬声器的设备状态改变
 export function event_device_change() {
   return onDeviceChange(function (deviceId, type, state) {
@@ -23,9 +37,12 @@ export function event_device_change() {
     // state 1 拨出 0 插入
     // Windows 端返回设备名，Mac 端返回设备 ID
     switch (type) {
-      case 2:
+      case TRTCDeviceType.TRTCDeviceTypeCamera:
         device_camera_list();
-        event_camera_change(deviceId, state === 1);
+        event_camera_change(
+          deviceId,
+          state === TRTCDeviceState.TRTCDeviceStateRemove
+        );
         break;
       default:
         break;

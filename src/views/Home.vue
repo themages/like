@@ -31,7 +31,11 @@ import {
   device_mic_store,
   device_speaker_store,
 } from "@/features/trtc/devices";
-import { event_device_change } from "@/features/trtc/events";
+import {
+  event_device_change,
+  event_camera_ready,
+  event_mic_ready,
+} from "@/features/trtc/events";
 export default {
   name: "Home",
   data() {
@@ -46,6 +50,8 @@ export default {
     device_camera_store();
     device_mic_store();
     device_speaker_store();
+    event_camera_ready();
+    event_mic_ready();
   },
   methods: {
     screenSharing() {

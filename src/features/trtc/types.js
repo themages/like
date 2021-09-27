@@ -12,3 +12,7 @@ export const DEVICES_STATUS_CONSTANT = {
 export const CAMERA_LOCAL_KEY = "camera";
 export const MIC_LOCAL_KEY = "mic";
 export const SPEAKER_LOCAL_KEY = "speaker";
+// 麦克风设备音量
+export const MIC_DEFAULT_VOLUME = 90;
+// 扬声器设备音量
+export const SPEAKER_DEFAULT_VOLUME = 100;
