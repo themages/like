@@ -12,7 +12,12 @@ export const DEVICES_STATUS_CONSTANT = {
 export const CAMERA_LOCAL_KEY = "camera";
 export const MIC_LOCAL_KEY = "mic";
 export const SPEAKER_LOCAL_KEY = "speaker";
-// 麦克风设备音量
+// 设置默认麦克风设备音量
 export const MIC_DEFAULT_VOLUME = 90;
-// 扬声器设备音量
+// 设置默认扬声器设备音量
 export const SPEAKER_DEFAULT_VOLUME = 100;
+// 测试麦克风音量变化的间隔
+export const TEST_MIC_VOLUME = 600;
+// 测试扬声器音量大小的播放文件
+export const TEST_SPEAKER_FILE =
+  "http://downsc.chinaz.net/Files/DownLoad/sound1/201906/11582.mp3";

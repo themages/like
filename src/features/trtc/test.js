@@ -12,15 +12,27 @@ import {
   stopSpeedTest,
   startCameraDeviceTest,
   stopCameraDeviceTest,
+  startMicDeviceTest,
+  stopMicDeviceTest,
+  startSpeakerDeviceTest,
+  stopSpeakerDeviceTest,
 } from "@/sdk/trtc/test";
-import { onSpeedTest } from "@/sdk/trtc/events/test";
+import {
+  onSpeedTest,
+  onTestMicVolume,
+  onTestSpeakerVolume,
+} from "@/sdk/trtc/events/test";
+import { TEST_MIC_VOLUME, TEST_SPEAKER_FILE } from "@/features/trtc/types";
 // 添加测速回调事件
-onSpeedTest(function (currentResult, finishedCount, totalCount) {
-  console.log("测速结果：%O", currentResult, finishedCount, totalCount);
-  if (finishedCount === totalCount) {
-    stopSpeedTest();
-  }
-});
+export function test_speed_event(listener) {
+  return onSpeedTest(listener);
+}
+export function test_mic_event(listener) {
+  return onTestMicVolume(listener);
+}
+export function test_speaker_event(listener) {
+  return onTestSpeakerVolume(listener);
+}
 // 开始测速
 export function test_start_sdk_speed() {
   return startSpeedTest(appId, userId, userSig);
@@ -36,4 +48,20 @@ export function test_start_local_camera(view) {
 // 关闭本地摄像头
 export function test_stop_local_camera() {
   return stopCameraDeviceTest();
+}
+// 开始本地麦克风
+export function test_start_local_mic() {
+  return startMicDeviceTest(TEST_MIC_VOLUME);
+}
+// 关闭本地麦克风
+export function test_stop_local_mic() {
+  return stopMicDeviceTest();
+}
+// 开始本地扬声器
+export function test_start_local_speaker() {
+  return startSpeakerDeviceTest(TEST_SPEAKER_FILE);
+}
+// 关闭本地扬声器
+export function test_stop_local_speaker() {
+  return stopSpeakerDeviceTest();
 }

@@ -24,8 +24,8 @@ export function stopCameraDeviceTest() {
   return rtcCloud.stopCameraDeviceTest();
 }
 // 开始进行麦克风测试
-export function startMicDeviceTest() {
-  return rtcCloud.startMicDeviceTest();
+export function startMicDeviceTest(interval) {
+  return rtcCloud.startMicDeviceTest(interval);
 }
 // 停止麦克风测试
 export function stopMicDeviceTest() {

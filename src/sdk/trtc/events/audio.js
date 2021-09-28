@@ -23,3 +23,11 @@ export function onSendFirstLocalAudioFrame(listener) {
 export function onSystemAudioLoopbackError(listener) {
   rtcCloud.on("onSystemAudioLoopbackError", listener);
 }
+// 当前音频采集设备音量变化回调
+export function onAudioDeviceCaptureVolumeChanged(listener) {
+  rtcCloud.on("onAudioDeviceCaptureVolumeChanged", listener);
+}
+// 当前音频播放设备音量变化回调
+export function onAudioDevicePlayoutVolumeChanged(listener) {
+  rtcCloud.on("onAudioDevicePlayoutVolumeChanged", listener);
+}
