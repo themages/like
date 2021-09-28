@@ -3,8 +3,8 @@
     <div>
       <button @click.stop="test_start_sdk_speed">开始测速</button>
       <button @click.stop="test_stop_sdk_speed">停止测速</button>
-      <button @click.stop="test_start_local_camera">开始预览</button>
-      <button @click.stop="test_stop_local_camera">停止预览</button>
+      <button @click.stop="test_start_local_camera">开始摄像头</button>
+      <button @click.stop="test_stop_local_camera">停止摄像头</button>
       <button @click.stop="test_start_local_mic">开始麦克风</button>
       <button @click.stop="test_stop_local_mic">停止麦克风</button>
       <button @click.stop="test_start_local_speaker">开始扬声器</button>
