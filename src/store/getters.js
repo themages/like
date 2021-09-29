@@ -8,4 +8,5 @@ export default {
   speakerStatus: (state) => state.speaker.status,
   speaker: (state) => state.speaker.speaker,
   speakerDevices: (state) => state.speaker.devices,
+  token: (state) => state.sdk.users,
 };

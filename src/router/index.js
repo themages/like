@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "@/views/Home.vue";
-import VideoChat from "@/views/videoChat/";
+import VideoCall from "@/views/videoCall/";
 import About from "@/views/About.vue";
 
 const routes = [
@@ -15,9 +15,9 @@ const routes = [
     component: About,
   },
   {
-    path: "/chat",
-    name: "Chat",
-    component: VideoChat,
+    path: "/video",
+    name: "Video",
+    component: VideoCall,
   },
 ];
 
