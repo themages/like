@@ -121,6 +121,11 @@ export function device_camera_add_local(currentCamera) {
   const stringify = stringify_devices();
   return setLocalItem(CAMERA_LOCAL_KEY, stringify(currentCamera));
 }
+// 切换使用摄像头，并且更新本地存储记录，以及保存 store 中
+export function device_switch_camera(currentCamera) {
+  device_camera_add_local(currentCamera);
+  device_camera_store();
+}
 // 获取所有麦克风设备列表，并保存到 store 中
 export function device_mic_store() {
   const micDevices = device_mic_list();
@@ -196,6 +201,11 @@ export function device_mic_remove_local() {
 export function device_mic_add_local(currentMic) {
   const stringify = stringify_devices();
   return setLocalItem(MIC_LOCAL_KEY, stringify(currentMic));
+}
+// 切换使用麦克风，并且更新本地存储记录，以及保存 store 中
+export function device_switch_mic(currentMic) {
+  device_mic_add_local(currentMic);
+  device_mic_store();
 }
 // 获取所有扬声器设备列表，并保存到 store 中
 export function device_speaker_store() {
@@ -273,4 +283,9 @@ export function device_speaker_remove_local() {
 export function device_speaker_add_local(currentSpeaker) {
   const stringify = stringify_devices();
   return setLocalItem(SPEAKER_LOCAL_KEY, stringify(currentSpeaker));
+}
+// 切换使用扬声器，并且更新本地存储记录，以及保存 store 中
+export function device_switch_speaker(currentSpeaker) {
+  device_speaker_add_local(currentSpeaker);
+  device_speaker_store();
 }
