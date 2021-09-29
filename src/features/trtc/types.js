@@ -20,4 +20,4 @@ export const SPEAKER_DEFAULT_VOLUME = 100;
 export const TEST_MIC_VOLUME = 600;
 // 测试扬声器音量大小的播放文件
 export const TEST_SPEAKER_FILE =
-  "http://downsc.chinaz.net/Files/DownLoad/sound1/201906/11582.mp3";
+  "https://media.w3.org/2010/05/sintel/trailer.mp4";
