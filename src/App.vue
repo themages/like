@@ -6,7 +6,27 @@
   </div>
   <router-view />
 </template>
-
+<script>
+import {
+  event_device_change,
+  event_camera_ready,
+  event_mic_ready,
+} from "@/features/trtc/events";
+import {
+  device_camera_store,
+  device_mic_store,
+  device_speaker_store,
+} from "@/features/trtc/devices";
+event_device_change();
+event_camera_ready();
+event_mic_ready();
+device_camera_store();
+device_mic_store();
+device_speaker_store();
+export default {
+  name: "App",
+};
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

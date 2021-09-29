@@ -77,18 +77,10 @@ import {
   test_speaker_event,
 } from "@/features/trtc/test";
 import {
-  device_camera_store,
   device_switch_camera,
-  device_mic_store,
   device_switch_mic,
-  device_speaker_store,
   device_switch_speaker,
 } from "@/features/trtc/devices";
-import {
-  event_device_change,
-  event_camera_ready,
-  event_mic_ready,
-} from "@/features/trtc/events";
 export default {
   name: "Home",
   data() {
@@ -105,12 +97,6 @@ export default {
   components: {},
   created() {
     this.version = getSDKVersion();
-    event_device_change();
-    device_camera_store();
-    device_mic_store();
-    device_speaker_store();
-    event_camera_ready();
-    event_mic_ready();
     test_speed_event((currentResult, finishedCount, totalCount) => {
       console.log("测速结果：%O", currentResult, finishedCount, totalCount);
       this.spead.push(currentResult);
@@ -144,7 +130,7 @@ export default {
           this.switchCamera = newVal;
         }
       },
-      immediate: false,
+      immediate: true,
     },
     mic: {
       handler(newVal) {
@@ -152,7 +138,7 @@ export default {
           this.switchMic = newVal;
         }
       },
-      immediate: false,
+      immediate: true,
     },
     speaker: {
       handler(newVal) {
@@ -160,7 +146,7 @@ export default {
           this.switchSpeaker = newVal;
         }
       },
-      immediate: false,
+      immediate: true,
     },
   },
   methods: {
