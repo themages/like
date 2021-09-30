@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
+    <router-link to="/">设备检测</router-link> |
     <router-link to="/video">视频聊天</router-link>
   </div>
   <router-view />
@@ -36,8 +36,6 @@ export default {
 }
 
 #nav {
-  padding: 30px;
-
   a {
     font-weight: bold;
     color: #2c3e50;

@@ -7,27 +7,27 @@
  * @FilePath: /like/src/store/modules/sdk.js
  */
 const state = {
-  appId: 1400574386,
+  appId: 1400578184,
   users: [
     {
       userId: "like",
       userSig:
-        "eJw1zL0OgjAYheF76Wzwoz9gSFyMg9HCQB1dwBb9UsTaEmM03rsIOp7nJO*L7KWK7saTjNAIyGzcqE3XY4Mjt2jNz4O2lXOoSRZzAJFytkimxzwcejO4EIICwKQ9Xr6WMBoLTv8a8DRk67yQrXTGFgglO8xTVe6uIjjd5Sv1DOcK-dpvb5sa8Lgk7w8fnDHe",
+        "eJwtzFELgjAUhuH-cq5DtrnTptBNRGB4VWF1GWzKaZnDiQnRf8-Uy*-54P3AOT9FvW0hBRExWE2bjH11VNLET3J28WDc3XsykHLJGCrNtZwfO3hq7eiIKBhjs3ZU-20di0RLLtRSoWrMup25DkVVHt7IVePigLemfySe4gsetdOuzkOx99k2ZBv4-gD2mTFY",
     },
     {
       userId: "test",
       userSig:
-        "eJwtzE0LglAQheH-creGTVfnGkIbkQRLWxi0aePHKENophcJo-*eqcvzHHg-4npOzIE64QppgtjMmwtqNJc8s6Zer94Xj7RtuRDuzgZAx7b2anno3XJHkyOiBIBFNdd-U5Z0EBSu2nM1ZQe-jC-BfXvzjrFHYRhJw0mCU5NVY65Tf3wZhAppiPL6eRDfHxcwMS4_",
+        "eJyrVgrxCdYrSy1SslIy0jNQ0gHzM1NS80oy0zLBwiWpxSVQ8eKU7MSCgswUJStDEwMDU3MLQwsTiExqRUFmUSpQ3NTU1MjAwAAiWpKZCxIzMzaytDAxMrCEmpKZDjS2sjQ-JDDbL9QvqzzVP9kpz7LCI7LK28zcudTcv6Dc2ak8x8XDMzzMwyQ82VapFgAR-DGa",
     },
     {
       userId: "online",
       userSig:
-        "eJwtzF0LgjAYhuH-suOQt7mpCB0EmbI*DloUHiqb8jKbsiSk6L9n6uFzPXB-yPUovZd2JCbUA7KaNipte6xw4tY2aPXyPJUpug4VidcMgIfMj4L50UOHTo-OOacAMGuPj78FPg05ZZG-VLAew3m5L9PcJC5NxO09oO63RWDuVjYCKpmd8HDJxM7V*bndkO8Pg*4ybA__",
+        "eJwtzMsOgjAUBNB-6dqQUqkUEleY6MJHomXh0qS35MqjDY-SxPjvIrCcM5P5EHl*BA5akhIWULKZMypoetQ4s2kqbGBtOlW*rEVF0jCilMciFNHSgLfYwuScc0YpXbTH*m*7LUtExNi67bCYjp-J9V6BKwaj2yPktdX5218yq0t50oMsYi9dYvh4uI178v0BoF0zfg__",
     },
     {
       userId: "group",
       userSig:
-        "eJyrVgrxCdYrSy1SslIy0jNQ0gHzM1NS80oy0zLBwulF*aUFUInilOzEgoLMFCUrQxMDA1NzE2MLM4hMakVBZlEqUNzU1NTIwMAAIlqSmQsSMzM2Mjc1MjUyhpqSmQ40NzLJMzPPNN-RpaQ0ySnP0L8gRr-M08wzJdDNLDiiws09NMAnMD0oKCO-ICPZVqkWAHEDMig_",
+        "eJwtzEELgjAYxvHvsnPY69zmErqJXUoCo0N0aWzKy3AuMymj756px*f3wP9DTvsi6E1LEkIDIKtpozauwxInrtrm6Zfjoe3Ne9QkCRkAj2Uo2fyYl8fWjM45pwAwa4f130REN5JRRpcKVmN359JsGKwTkbsUMebZWaTX9UHn99r21VG9U6EUt7YRwLbk*wN0LDH2",
     },
   ], // sdk 用户名和签名
 };

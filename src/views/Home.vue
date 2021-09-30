@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <p>【trtc-sdk版本号：{{ version }}】</p>
     <div>
       <button @click.stop="test_start_sdk_speed">开始测速</button>
       <button @click.stop="test_stop_sdk_speed">停止测速</button>
@@ -44,7 +45,6 @@
       </div>
     </div>
     <div id="local"></div>
-    <div>【trtc-sdk版本号：{{ version }}】</div>
     <div>【麦克风测试音量变化: {{ micVolume }}】</div>
     <div>【扬声器测试音量变化: {{ speakerVolume }}】</div>
     <div>
@@ -115,6 +115,8 @@ export default {
   },
   computed: {
     ...mapGetters({
+      appId: "appId",
+      token: "token",
       camera: "camera",
       cameraDevices: "cameraDevices",
       mic: "mic",
@@ -150,7 +152,10 @@ export default {
     },
   },
   methods: {
-    test_start_sdk_speed,
+    test_start_sdk_speed() {
+      const { userId, userSig } = this.token[0];
+      test_start_sdk_speed(this.appId, userId, userSig);
+    },
     test_stop_sdk_speed,
     test_start_local_camera() {
       test_start_local_camera(document.getElementById("local"));
@@ -174,7 +179,6 @@ export default {
     },
   },
   beforeUnmount() {
-    console.log("卸载页面");
     test_stop_sdk_speed();
     test_stop_local_camera();
     test_stop_local_mic();

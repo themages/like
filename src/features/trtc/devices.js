@@ -179,7 +179,7 @@ export function device_mic_current() {
 // 获取并设置当前使用的静音状态，以及获取并设置麦克风的音量大小
 export function device_mic_mute() {
   const mute = getCurrentMicDeviceMute();
-  if (!mute) {
+  if (mute) {
     setCurrentMicDeviceMute(false);
   }
   const volume = getCurrentMicDeviceVolume();
@@ -261,7 +261,7 @@ export function device_speaker_current() {
 // 获取并设置当前使用扬声器的静音状态，以及获取并设置扬声器的音量大小
 export function device_speaker_mute() {
   const mute = getCurrentSpeakerDeviceMute();
-  if (!mute) {
+  if (mute) {
     setCurrentSpeakerDeviceMute(false);
   }
   const volume = getCurrentSpeakerVolume();

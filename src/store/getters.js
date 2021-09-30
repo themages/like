@@ -9,4 +9,5 @@ export default {
   speaker: (state) => state.speaker.speaker,
   speakerDevices: (state) => state.speaker.devices,
   token: (state) => state.sdk.users,
+  appId: (state) => state.sdk.appId,
 };

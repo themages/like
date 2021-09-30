@@ -6,7 +6,6 @@
  * @Description: 设备、网络测试
  * @FilePath: /like/src/features/trtc/test.js
  */
-import { appId, userId, userSig } from "@/features/trtc/sdk";
 import {
   startSpeedTest,
   stopSpeedTest,
@@ -34,7 +33,7 @@ export function test_speaker_event(listener) {
   return onTestSpeakerVolume(listener);
 }
 // 开始测速
-export function test_start_sdk_speed() {
+export function test_start_sdk_speed(appId, userId, userSig) {
   return startSpeedTest(appId, userId, userSig);
 }
 // 停止测速

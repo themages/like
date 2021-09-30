@@ -8,6 +8,8 @@ export const DEVICES_STATUS_CONSTANT = {
   out: 5,
   inserted: 6,
 };
+// 登陆退出房间初始状态
+export const ROOM_STATUS_DEFAULT = 0;
 // 本地存储 key 名
 export const CAMERA_LOCAL_KEY = "camera";
 export const MIC_LOCAL_KEY = "mic";
@@ -21,3 +23,7 @@ export const TEST_MIC_VOLUME = 600;
 // 测试扬声器音量大小的播放文件
 export const TEST_SPEAKER_FILE =
   "https://media.w3.org/2010/05/sintel/trailer.mp4";
+// 本地流显示容器
+export const local = "local";
+// 远端流显示容器
+export const remote = "remote";
