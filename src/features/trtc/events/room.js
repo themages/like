@@ -64,7 +64,7 @@ export function findVideoView(uid) {
     userVideoElement = document.createElement("div");
     userVideoElement.id = uid;
     userVideoElement.classList.add("videoView");
-    document.querySelector(remote).appendChild(userVideoElement);
+    document.getElementById(remote).appendChild(userVideoElement);
   }
   return userVideoElement;
 }
@@ -72,7 +72,7 @@ export function findVideoView(uid) {
 export function destroyVideoView(uid) {
   var userVideoElement = document.getElementById(uid);
   if (userVideoElement) {
-    document.querySelector(remote).removeChild(userVideoElement);
+    document.getElementById(remote).removeChild(userVideoElement);
   }
 }
 // 监听用户是否开启摄像头视频的回调事件
