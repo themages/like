@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-09-23 18:45:58
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-09-23 19:12:28
+ * @LastEditTime: 2021-10-04 11:25:17
  * @Description: 设备状态记录
  * @FilePath: /like/src/features/trtc/devices.js
  */
@@ -53,7 +53,7 @@ import {
   MIC_DEFAULT_VOLUME,
   SPEAKER_DEFAULT_VOLUME,
 } from "@/features/trtc/types";
-
+const stringify = stringify_devices();
 // 获取默认摄像头以及历史记录，从而是否更新设备记录
 export function device_camera_store() {
   const cameraDevices = device_camera_list();
@@ -118,7 +118,6 @@ export function device_camera_remove_local() {
 }
 // 保存摄像头记录
 export function device_camera_add_local(currentCamera) {
-  const stringify = stringify_devices();
   return setLocalItem(CAMERA_LOCAL_KEY, stringify(currentCamera));
 }
 // 切换使用摄像头，并且更新本地存储记录，以及保存 store 中
@@ -199,7 +198,6 @@ export function device_mic_remove_local() {
 }
 // 保存麦克风记录
 export function device_mic_add_local(currentMic) {
-  const stringify = stringify_devices();
   return setLocalItem(MIC_LOCAL_KEY, stringify(currentMic));
 }
 // 切换使用麦克风，并且更新本地存储记录，以及保存 store 中
@@ -281,7 +279,6 @@ export function device_speaker_remove_local() {
 }
 // 保存扬声器记录
 export function device_speaker_add_local(currentSpeaker) {
-  const stringify = stringify_devices();
   return setLocalItem(SPEAKER_LOCAL_KEY, stringify(currentSpeaker));
 }
 // 切换使用扬声器，并且更新本地存储记录，以及保存 store 中
