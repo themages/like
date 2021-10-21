@@ -3,6 +3,7 @@
 import { app, protocol, BrowserWindow, powerSaveBlocker } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
+import { autoUpdater } from "electron-updater";
 const path = require("path");
 const gotTheLock = app.requestSingleInstanceLock();
 const isPackaged = app.isPackaged;
@@ -74,6 +75,7 @@ if (!gotTheLock) {
       createProtocol(PROTOCOL);
     }
     createWindow();
+    autoUpdater.checkForUpdatesAndNotify();
   });
 
   // Exit cleanly on request from parent process in development mode.
