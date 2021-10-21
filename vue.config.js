@@ -11,7 +11,7 @@ const isDev = process.env.NODE_ENV !== "production";
 const appId = "themages.canicode.cn";
 const copyright = "Copyright canicode © 2021";
 const artifactName = "${productName}_${version}_${os}_${arch}.${ext}";
-
+const WorkerPlugin = require("worker-plugin");
 module.exports = {
   devServer: {
     overlay: {
@@ -21,6 +21,11 @@ module.exports = {
   },
   configureWebpack: {
     devtool: isDev ? "source-map" : undefined,
+    plugins: [
+      new WorkerPlugin({
+        preserveTypeModule: true,
+      }),
+    ],
   },
   lintOnSave: isDev,
   productionSourceMap: isDev,
