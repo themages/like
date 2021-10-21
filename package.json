@@ -21,6 +21,7 @@
   "main": "background.js",
   "dependencies": {
     "core-js": "^3.6.5",
+    "electron-builder": "^22.13.1",
     "fast-json-stringify": "^2.7.9",
     "long": "^4.0.0",
     "trtc-electron-sdk": "^8.9.102",
