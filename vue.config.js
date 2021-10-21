@@ -115,6 +115,7 @@ module.exports = {
           perMachine: true, // 选择按机器安装
           allowElevation: true, // 允许请求提升。 如果为false，则用户必须使用提升的权限重新启动安装程序。
           allowToChangeInstallationDirectory: true, // 允许修改安装目录
+          deleteAppDataOnUninstall: true, // 是否在卸载时删除应用程序数据
           installerIcon: "build/icons/app.ico", // 安装图标
           uninstallerIcon: "build/icons/app.ico", //卸载图标
           installerHeaderIcon: "build/icons/app.ico", // 安装时头部图标
@@ -125,6 +126,13 @@ module.exports = {
           shortcutName: pkg.name, // 图标名称
           include: "build/nsis/installer.nsh", // 自定义 NSIS 脚本
         },
+        protocols: [
+          // for macOS - 用于在主机注册指定协议
+          {
+            name: "likelive",
+            schemes: ["likelive"],
+          },
+        ],
       },
     },
   },
