@@ -83,6 +83,7 @@ module.exports = {
           extendInfo: {
             NSCameraUsageDescription: "Request camera usage",
             NSMicrophoneUsageDescription: "Request mic usage",
+            CFBundleURLSchemes: ["likelive"],
           },
         },
         dmg: {
