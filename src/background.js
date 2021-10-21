@@ -28,6 +28,10 @@ if (!gotTheLock) {
       }
     }
   });
+  app.on("open-url", (event, url) => {
+    event.preventDefault();
+    console.log("open-url: %O", url);
+  });
   // Scheme must be registered before the app is ready
   protocol.registerSchemesAsPrivileged([
     { scheme: PROTOCOL, privileges: { secure: true, standard: true } },
