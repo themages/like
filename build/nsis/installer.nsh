@@ -1,4 +1,5 @@
 !macro customInstall
+  DeleteRegKey HKCR "likelive"
   WriteRegStr HKCR "likelive" "" "URL:likelive"
   WriteRegStr HKCR "likelive" "URL Protocol" ""
   WriteRegStr HKCR "likelive\shell" "" ""

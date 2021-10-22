@@ -2,7 +2,7 @@
  * @Author: 曾星旗 <me@zengxingqi.com>
  * @Date: 2021-09-16 20:27:13
  * @LastEditors: 曾星旗 <me@zengxingqi.com>
- * @LastEditTime: 2021-09-19 02:51:37
+ * @LastEditTime: 2021-10-22 22:03:25
  * @Description: 构建、打包配置文件
  * @FilePath: /like/vue.config.js
  */
@@ -83,7 +83,6 @@ module.exports = {
           extendInfo: {
             NSCameraUsageDescription: "Request camera usage",
             NSMicrophoneUsageDescription: "Request mic usage",
-            CFBundleURLSchemes: ["likelive"],
           },
         },
         dmg: {
@@ -130,7 +129,7 @@ module.exports = {
         protocols: [
           // for macOS - 用于在主机注册指定协议
           {
-            name: "likelive",
+            name: pkg.name,
             schemes: ["likelive"],
           },
         ],
