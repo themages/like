@@ -15,7 +15,7 @@ import {
 import { startLocalAudio, stopLocalAudio } from "@/sdk/trtc/audio";
 import { enterRoom, exitRoom, setDefaultStreamRecvMode } from "@/sdk/trtc/room";
 import store from "@/store/";
-import { ROOM_SELECT_USER } from "@/store/types";
+import { USERS_SELECT_USER } from "@/store/types";
 // 加入房间
 export function video_enter_room(params) {
   const { sdkAppId, userId, userSig, roomId, strRoomId, role } = params;
@@ -73,7 +73,7 @@ export function video_exit_room() {
 }
 // 选择用户名和用户签名
 export function video_select_user(token) {
-  store.commit(ROOM_SELECT_USER, token);
+  store.commit(USERS_SELECT_USER, token);
 }
 // 默认进房后自动接收音视频
 export function video_stream_recvMode() {

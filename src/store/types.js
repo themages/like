@@ -21,4 +21,5 @@ export const ROOM_USER_ENTER = "room/changeRoomUserEnter";
 export const ROOM_USER_LEAVE = "room/changeRoomUserLeave";
 export const ROOM_USER_ROLE = "room/changeRoomUserRole";
 export const ROOM_SWITCH_ROLE = "room/changeRoomSwitchRoleStatus";
-export const ROOM_SELECT_USER = "room/selectRoomUser";
+
+export const USERS_SELECT_USER = "users/selectRoomUser";

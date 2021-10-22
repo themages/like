@@ -6,7 +6,6 @@ const state = {
   roomUserLeave: null, // 用户离开当前房间
   roomUserRole: null, // 用户角色
   roomSwitchRoleStatus: null, // 切换角色状态码
-  user: null, // 选择进入房间的用户名和用户签名
 };
 const mutations = {
   changeRoomEnterStatus(state, num) {
@@ -29,9 +28,6 @@ const mutations = {
   },
   changeRoomSwitchRoleStatus(state, num) {
     state.roomSwitchRoleStatus = num;
-  },
-  selectRoomUser(state, token) {
-    state.user = token;
   },
 };
 const actions = {};
