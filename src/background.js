@@ -4,7 +4,6 @@ import { app, protocol, BrowserWindow, powerSaveBlocker } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS3_DEVTOOLS } from "electron-devtools-installer";
 import { autoUpdater } from "electron-updater";
-const path = require("path");
 const gotTheLock = app.requestSingleInstanceLock();
 const isPackaged = app.isPackaged;
 const PROTOCOL = "likelive";
@@ -36,10 +35,6 @@ if (!gotTheLock) {
   protocol.registerSchemesAsPrivileged([
     { scheme: PROTOCOL, privileges: { secure: true, standard: true } },
   ]);
-  // 仅在打包后的应用才去设置唤醒协议
-  if (isPackaged) {
-    setAsDefaultProtocolClient();
-  }
   // Quit when all windows are closed.
   app.on("window-all-closed", () => {
     // On macOS it is common for applications and their menu bar
@@ -118,21 +113,4 @@ async function createWindow() {
     // Load the index.html when not in development
     win.loadURL(`${PROTOCOL}://./index.html`);
   }
-}
-// 设置客户端唤醒协议
-function setAsDefaultProtocolClient() {
-  const argv = [];
-  if (!isPackaged) {
-    argv.push(path.resolve(`${process.argv[1]}`));
-  }
-  argv.push("--");
-  const isDefault = app.isDefaultProtocolClient(
-    PROTOCOL,
-    process.execPath,
-    argv
-  );
-  if (!isDefault) {
-    app.setAsDefaultProtocolClient(PROTOCOL, process.execPath, argv);
-  }
-  // app.removeAsDefaultProtocolClient(PROTOCOL, process.execPath, argv)
 }
