@@ -21,7 +21,7 @@
 
 ## Electron 体验版本
 
-见 https://github.com/themages/like/releases
+[releases](https://github.com/themages/like/releases): 见 Tag
 
 ## 开发计划
 
