@@ -9,20 +9,21 @@
 </p>
 
 <h2 align="center">like</h2>
-一个跨平台音视频直播应用，目前支持 Windows x64 / macOS 操作系统，本项目依赖于腾讯实时音视频 SDK 和 WebRTC 以及 SRS 流媒体服务等技术，实现语音视频通话和在线互动直播。
+一个跨平台实时音视频应用，目前支持 Windows / MacOS 操作系统，包括 WebRTC + SRS 的 Web 浏览器版本，腾讯云 SDK 的 Electron 客户端版本。
 
 ## 文档
 
 待完善...
 
-## Demo
+## Web/H5 体验版本
 
-[多人视频聊天](https://tv.canicode.cn)：请使用谷歌浏览器打开网址，然后输入房间号，进入同一个房间，目前没有限制房间人数。
+[多人视频聊天](https://tv.canicode.cn)：请使用谷歌浏览器打开访问，目前没有限制房间人数。
 
 ## 开发计划
 
 1. [branches/v3](https://github.com/themages/like/tree/v3)：已停止开发
-2. [branches/v1](https://github.com/themages/like/tree/v1)：正在研发中
+2. [branches/v1](https://github.com/themages/like/tree/v1)：已停止开发
+3. [个人仓库](https://git.canicode.cn/git/likertc): 正在研发中（WebRTC + SRS）
 
 ## License
 
