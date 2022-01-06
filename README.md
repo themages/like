@@ -21,13 +21,13 @@
 
 ## Electron 体验版本
 
-[releases 0.1.0](https://github.com/themages/like/releases): 见 Tags
+[releases 0.1.0](https://github.com/themages/like/releases)：见 Tags
 
 ## 开发计划
 
 1. [branches/v3](https://github.com/themages/like/tree/v3)：已停止开发
 2. [branches/v1](https://github.com/themages/like/tree/v1)：已停止开发
-3. [个人仓库](https://git.canicode.cn/git/likertc): 正在研发中（WebRTC + SRS）
+3. [个人仓库](https://git.canicode.cn/git/likertc)：正在研发中（WebRTC + SRS）
 
 ## License
 
