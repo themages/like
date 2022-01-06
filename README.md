@@ -9,7 +9,7 @@
 </p>
 
 <h2 align="center">like</h2>
-一个跨平台实时音视频应用，目前支持 Windows / MacOS 操作系统，包括 WebRTC + SRS 的 Web 浏览器版本，腾讯云 SDK 的 Electron 客户端版本。
+一个跨平台实时音视频应用，目前支持 Windows / MacOS 操作系统，包括 WebRTC + SRS 实现的 Web 浏览器版本，腾讯云 SDK 实现的 Electron 客户端版本。
 
 ## 文档
 
@@ -18,6 +18,10 @@
 ## Web/H5 体验版本
 
 [多人视频聊天](https://tv.canicode.cn)：请使用谷歌浏览器打开访问，目前没有限制房间人数。
+
+## Electron 体验版本
+
+见
 
 ## 开发计划
 
